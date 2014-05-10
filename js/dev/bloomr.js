@@ -6,7 +6,7 @@
     var settings = {},
         bloomr = function () {
 
-        var that = new bloomr.fn.init(customSettings);
+        var that = new bloomr.fn.init();
 
 
 
@@ -37,7 +37,7 @@
 
         sanitizeBreakPoint: function(breakpoint){
             
-            return breakpoint.replace(/-|\(|\)|:/, "");
+            return breakpoint.replace(/\-|\(|\)|\s|:/gm, "");
 
         },
 

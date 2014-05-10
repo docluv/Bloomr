@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Bloomr Test</title>
+        <style>
+
+            
+            .bloomr-log{
+                height:  400px;
+                width: 400px;
+                background-color: #808080;
+                color: #eee;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <h1>Bloomr Tests</h1>
+        <div class="bloomr-log"></div>
+        <script src="../dev/bloomr.js"></script>
+        <script>
+
+            
+            var b = bloomr();
+            
+            function addToLog(message) {
+            
+                var log = document.querySelector(".bloomr-log");
+            
+                log.innerHTML = "<p>" + message + "</p>" + log.innerHTML;
+            
+            };
+            
+            b.addMQL("(min-width: 600px)",{
+                name: "match",
+                callback: function () {
+                            addToLog("above 600px");
+                        } 
+            },{
+                name: "nomatch",
+                callback: function () {
+                            addToLog("below 600px");
+                        } 
+            });
+            
+        </script>
+    </body>
+</html>

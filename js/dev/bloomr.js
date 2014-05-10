@@ -47,13 +47,28 @@
                 bp = that.sanitizeBreakPoint(breakpoint);
 
             if(!that.MQLs[bp]){
-                that.MQLs[bp] = {};
+                that.MQLs[bp] = {
+                    match : {},
+                    nomatch : {},
+                    mql: {}
+                };
             }
 
             //being agressive here. Assume they are replacing the previous assignment
             that.MQLs[bp].match[match.name] = match.callback;
             that.MQLs[bp].nomatch[nomatch.name] = nomatch.callback;
 
+            that.MQLs[bp].mql = window.matchMedia(breakpoint);
+
+            that.MQLs[bp].mql.addListener(function(e){
+                
+                if (e.matches) {
+                    that.MQLs[bp].match[match.name]();
+                }else{
+                    that.MQLs[bp].nomatch[nomatch.name]();
+                }
+
+            });
         },
 
         removeMQL: function(breakpoint, match, nomatch){

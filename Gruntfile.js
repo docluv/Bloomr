@@ -27,7 +27,7 @@ module.exports = function (grunt) {
             options: {
                 compress: true
             },
-            spa: {
+            bloomr: {
                 src: ['js/dev/bloomr.js'],
                 dest: 'js/bloomr.min.js'
             }

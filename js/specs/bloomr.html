@@ -54,6 +54,29 @@
                 }
             });
 
+            b.addMQL("(min-width: 800px)", {
+                name: "match",
+                callback: function () {
+                    addToLog("above 800px");
+                }
+            }, {
+                name: "nomatch",
+                callback: function () {
+                    addToLog("below 800px");
+                }
+            });
+
+            b.addMQL("(min-width: 800px)", {
+                name: "match2X",
+                callback: function () {
+                    addToLog("above 800px 2X");
+                }
+            }, {
+                name: "nomatch2X",
+                callback: function () {
+                    addToLog("below 800px 2X");
+                }
+            });
 
             document.querySelector(".bloomr-remove-mql")
                 .addEventListener("click", function (e) {

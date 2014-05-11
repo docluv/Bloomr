@@ -110,11 +110,15 @@
             }
 
             //remove callbacks here
-            delete that.MQLs[bp].match["match"];
-            delete that.MQLs[bp].nomatch["nomatch"];
-            delete that.MQLs[bp].mql;
-            delete that.MQLs[bp];
+            delete that.MQLs[bp].match[match];
+            delete that.MQLs[bp].nomatch[nomatch];
 
+            if(Object.keys(that.MQLs[bp].match).length === 0 &&
+                Object.keys(that.MQLs[bp].nomatch).length === 0){
+                
+                delete that.MQLs[bp];
+            }
+            
         }
 
     };

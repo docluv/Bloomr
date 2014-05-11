@@ -12,9 +12,11 @@
                 background-color: #808080;
                 color: #eee;
                 display: inline-block;
+                overflow: hidden;
             }
             
-            .bloomr-remove-mql{
+            .bloomr-remove-mql,
+            .bloomr-remove-mql-600{
                 display: inline-block;
                 width: 100px;
                 height: 35px;
@@ -23,25 +25,31 @@
                 margin:  10px 40px;
             }
             
+            .bloomr-log p {
+                margin:  0;
+            }
+            
         </style>
     </head>
     <body>
         <h1>Bloomr Tests</h1>
+        <div>
+            <div class="bloomr-remove-mql">Remove 800</div>
+            <div class="bloomr-remove-mql-600">Remove 600</div>
+        </div>
         <div class="bloomr-log"></div>
-        <div class="bloomr-remove-mql">Remove</div>
         <script src="../dev/bloomr.js"></script>
-        <script>
-
+        <script>            
             var b = bloomr();
-
+            
             function addToLog(message) {
-
+            
                 var log = document.querySelector(".bloomr-log");
-
+            
                 log.innerHTML = "<p>" + message + "</p>" + log.innerHTML;
-
+            
             };
-
+            
             b.addMQL("(min-width: 600px)", {
                 name: "match",
                 callback: function () {
@@ -53,7 +61,7 @@
                     addToLog("below 600px");
                 }
             });
-
+            
             b.addMQL("(min-width: 800px)", {
                 name: "match",
                 callback: function () {
@@ -65,7 +73,7 @@
                     addToLog("below 800px");
                 }
             });
-
+            
             b.addMQL("(min-width: 800px)", {
                 name: "match2X",
                 callback: function () {
@@ -77,14 +85,22 @@
                     addToLog("below 800px 2X");
                 }
             });
-
+            
             document.querySelector(".bloomr-remove-mql")
                 .addEventListener("click", function (e) {
-
-                    b.removeMQL("(min-width: 600px)");
-
+            
+                    b.removeMQL("(min-width: 800px)", "match2X", "nomatch2X");
+            
                 });
-
+            
+            document.querySelector(".bloomr-remove-mql-600")
+                .addEventListener("click", function (e) {
+            
+                    b.removeMQL("(min-width: 600px)", "match", "nomatch");
+            
+                });
+            
+            
         </script>
     </body>
 </html>

@@ -11,6 +11,16 @@
                 width: 400px;
                 background-color: #808080;
                 color: #eee;
+                display: inline-block;
+            }
+            
+            .bloomr-remove-mql{
+                display: inline-block;
+                width: 100px;
+                height: 35px;
+                background-color: #ff6a00;
+                color: #fff;
+                margin:  10px 40px;
             }
             
         </style>
@@ -18,32 +28,40 @@
     <body>
         <h1>Bloomr Tests</h1>
         <div class="bloomr-log"></div>
+        <div class="bloomr-remove-mql">Remove</div>
         <script src="../dev/bloomr.js"></script>
         <script>
 
-            
             var b = bloomr();
-            
+
             function addToLog(message) {
-            
+
                 var log = document.querySelector(".bloomr-log");
-            
+
                 log.innerHTML = "<p>" + message + "</p>" + log.innerHTML;
-            
+
             };
-            
-            b.addMQL("(min-width: 600px)",{
+
+            b.addMQL("(min-width: 600px)", {
                 name: "match",
                 callback: function () {
-                            addToLog("above 600px");
-                        } 
-            },{
+                    addToLog("above 600px");
+                }
+            }, {
                 name: "nomatch",
                 callback: function () {
-                            addToLog("below 600px");
-                        } 
+                    addToLog("below 600px");
+                }
             });
-            
+
+
+            document.querySelector(".bloomr-remove-mql")
+                .addEventListener("click", function (e) {
+
+                    b.removeMQL("(min-width: 600px)");
+
+                });
+
         </script>
     </body>
 </html>

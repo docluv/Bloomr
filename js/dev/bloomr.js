@@ -34,8 +34,6 @@
             }
         */
         MQLs: {},
-        matches: {},
-        nomatches: {},
 
         sanitizeBreakPoint: function(breakpoint){
 

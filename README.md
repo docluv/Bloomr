@@ -3,7 +3,7 @@ Bloomr
 
 Source: # [Bloomr](https://github.com/docluv/Bloomr)
 
-A Service to Manage MediaQueryListeners
+A Library to Manage MediaQueryListeners
 
 One aspect of responsive single page applications is the ability to define callbacks 
 in response to the browser's viewport changing. MediaQueryListeners were designed 
